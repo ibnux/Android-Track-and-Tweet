@@ -1,7 +1,5 @@
 package com.ibnux.trackandtweet.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,7 +8,8 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
-import com.ibnux.trackandtweet.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ibnux.trackandtweet.data.Akun;
 import com.ibnux.trackandtweet.data.ObjectBox;
 import com.ibnux.trackandtweet.databinding.ActivityTwitterLoginBinding;
@@ -84,6 +83,7 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
                     akun.tsecret = json.getString("tsecret");
                     akun.avatar = user.getString("profile_image_url_https");
                     ObjectBox.getAkun().put(akun);
+                    setResult(RESULT_OK);
                 }catch (Exception e){
                     Toast.makeText(this,"Gagal Memvalidasi login",Toast.LENGTH_LONG).show();
                 }
