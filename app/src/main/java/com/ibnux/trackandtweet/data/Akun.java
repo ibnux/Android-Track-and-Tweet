@@ -15,4 +15,9 @@ public class Akun {
         this.token = token;
         this.secret = secret;
     }
+
+    @Override
+    public String toString() {
+        return "@" + username ;
+    }
 }

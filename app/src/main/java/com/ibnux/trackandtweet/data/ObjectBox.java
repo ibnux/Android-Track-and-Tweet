@@ -28,15 +28,15 @@ public class ObjectBox {
         return get().boxFor(Akun.class).put(akun);
     }
 
-    public static Box<Acara> getAcara(){
-        return get().boxFor(Acara.class);
+    public static Box<Aktivitas> getAktivitas(){
+        return get().boxFor(Aktivitas.class);
     }
 
-    public static Acara getAcara(long id){
-        return get().boxFor(Acara.class).query().equal(Acara_.id,id).build().findFirst();
+    public static Aktivitas getAktivitas(long id){
+        return get().boxFor(Aktivitas.class).query().equal(Aktivitas_.id,id).build().findFirst();
     }
 
-    public static long putAcara(Acara acara){
-        return get().boxFor(Acara.class).put(acara);
+    public static long putAktivitas(Aktivitas acara){
+        return get().boxFor(Aktivitas.class).put(acara);
     }
 }

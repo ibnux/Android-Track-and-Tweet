@@ -13,7 +13,7 @@ public class Tweet {
     public String text;
     public double lat,lon;
     public long waktu;
-    public ToOne<Acara> acara;
+    public ToOne<Aktivitas> acara;
 
     public Tweet(int urutan, String text){
         this.urutan = urutan;

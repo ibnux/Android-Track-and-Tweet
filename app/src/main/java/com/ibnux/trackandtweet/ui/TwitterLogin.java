@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
         super.onCreate(savedInstanceState);
         binding = ActivityTwitterLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setTitle("Login Twitter");
         binding.mWebView.setListener(this, this);
         binding.mWebView.loadUrl("https://twitter.ibnux.net/");
         binding.mWebView.addPermittedHostname("twitter.ibnux.net");
@@ -65,12 +67,15 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
 
     @Override
     public void onPageStarted(String url, Bitmap favicon) {
+        setTitle(url);
         binding.progressBar.setIndeterminate(true);
         binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onPageFinished(String url) {
+        setTitle(url);
+        Log.d("T&T", "onPageFinished"+url);
         binding.progressBar.setVisibility(View.GONE);
         if(url.contains("/selesai/")){
             if(url.contains("?session=")){
@@ -80,11 +85,12 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
                     JSONObject user = json.getJSONObject("user");
                     Akun akun = new Akun(user.getString("screen_name"),user.getString("id_str"),json.getString("token"),json.getString("secret"));
                     akun.tkey = json.getString("tkey");
-                    akun.tsecret = json.getString("tsecret");
+                    akun.tsecret = json.getString("tsec");
                     akun.avatar = user.getString("profile_image_url_https");
                     ObjectBox.getAkun().put(akun);
                     setResult(RESULT_OK);
                 }catch (Exception e){
+                    Log.d("T&T", "onPageFinished Exception "+e.getMessage());
                     Toast.makeText(this,"Gagal Memvalidasi login",Toast.LENGTH_LONG).show();
                 }
             }else if(url.contains("?error=")){

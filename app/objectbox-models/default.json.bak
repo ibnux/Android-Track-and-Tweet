@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:817426372055359947",
-      "lastPropertyId": "5:9069062871052339201",
+      "lastPropertyId": "8:1534660575005741624",
       "name": "Akun",
       "properties": [
         {
@@ -33,20 +33,153 @@
           "id": "5:9069062871052339201",
           "name": "secret",
           "type": 9
+        },
+        {
+          "id": "6:2351949294199091672",
+          "name": "avatar",
+          "type": 9
+        },
+        {
+          "id": "7:6222059621726538468",
+          "name": "tkey",
+          "type": 9
+        },
+        {
+          "id": "8:1534660575005741624",
+          "name": "tsecret",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:7030390697225908388",
+      "lastPropertyId": "9:435159143908446515",
+      "name": "Acara",
+      "properties": [
+        {
+          "id": "1:5516818348023806913",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4820185531653653627",
+          "name": "namaAcara",
+          "type": 9
+        },
+        {
+          "id": "4:8825578495825280612",
+          "name": "hashTag",
+          "type": 9
+        },
+        {
+          "id": "5:7990578262228554773",
+          "name": "waktu",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "6:281457693354974620",
+          "name": "status",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "7:1003905515596775620",
+          "name": "template",
+          "type": 9
+        },
+        {
+          "id": "8:7148690990525512472",
+          "name": "interval",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "9:435159143908446515",
+          "name": "byTime",
+          "type": 1,
+          "flags": 4
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:8492462206028331630",
+          "name": "akuns",
+          "targetId": "1:817426372055359947"
+        }
+      ]
+    },
+    {
+      "id": "3:3769612682949409938",
+      "lastPropertyId": "8:256217776834218091",
+      "name": "Tweet",
+      "properties": [
+        {
+          "id": "1:5864002529899384829",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4401657930124488041",
+          "name": "urutan",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "3:1290406479505950142",
+          "name": "speed",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "4:19120601814089255",
+          "name": "text",
+          "type": 9
+        },
+        {
+          "id": "5:5780655249026467980",
+          "name": "lat",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "6:7528029431313144387",
+          "name": "lon",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "7:4678386928559697407",
+          "name": "waktu",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "8:256217776834218091",
+          "name": "acaraId",
+          "indexId": "1:2896508553788557502",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Acara"
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:817426372055359947",
-  "lastIndexId": "0:0",
-  "lastRelationId": "0:0",
+  "lastEntityId": "3:3769612682949409938",
+  "lastIndexId": "1:2896508553788557502",
+  "lastRelationId": "1:8492462206028331630",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    8594142417317811642
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

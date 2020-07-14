@@ -5,7 +5,7 @@ import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToMany;
 
 @Entity
-public class Acara {
+public class Aktivitas {
     @Id
     public long id;
     public String namaAcara, template, hashTag;
@@ -15,7 +15,7 @@ public class Acara {
     public boolean byTime = true;
     public ToMany<Akun> akuns;
 
-    public Acara(String namaAcara, String template, String hashTag, long waktu){
+    public Aktivitas(String namaAcara, String template, String hashTag, long waktu){
         this.namaAcara = namaAcara;
         this.template = template;
         this.hashTag = hashTag;
