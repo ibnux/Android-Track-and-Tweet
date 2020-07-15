@@ -2,6 +2,7 @@ package com.ibnux.trackandtweet.ui;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -10,10 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.ibnux.trackandtweet.R;
 import com.ibnux.trackandtweet.Util;
 import com.ibnux.trackandtweet.adapter.TweetAdapter;
 import com.ibnux.trackandtweet.data.Aktivitas;
@@ -102,10 +105,22 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
             is.putExtra("broadcast", aktivitas.id + "");
             LocalBroadcastManager.getInstance(this).sendBroadcast(is);
         }else if(v==binding.btnStop){
-            Intent is = new Intent("TrackNTweetService");
-            is.putExtra("stop","stop");
-            is.putExtra("broadcast", aktivitas.id + "");
-            LocalBroadcastManager.getInstance(this).sendBroadcast(is);
+            new AlertDialog.Builder(this)
+                    .setIcon(R.mipmap.ic_launcher)
+                    .setTitle("Hentikan aktivitas?")
+                    .setMessage(aktivitas.namaAcara)
+                    .setPositiveButton("Stop", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent is = new Intent("TrackNTweetService");
+                            is.putExtra("stop","stop");
+                            is.putExtra("broadcast", aktivitas.id + "");
+                            LocalBroadcastManager.getInstance(AktivitasActivity.this).sendBroadcast(is);
+                        }
+                    })
+                    .setNeutralButton("Batal",null)
+                    .show();
+
         }
     }
 

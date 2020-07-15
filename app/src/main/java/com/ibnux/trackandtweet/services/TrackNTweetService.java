@@ -18,6 +18,7 @@ import android.os.StrictMode;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.ibnux.trackandtweet.MainActivity;
 import com.ibnux.trackandtweet.R;
 import com.ibnux.trackandtweet.Util;
 import com.ibnux.trackandtweet.data.Aktivitas;
@@ -25,7 +26,6 @@ import com.ibnux.trackandtweet.data.Akun;
 import com.ibnux.trackandtweet.data.ObjectBox;
 import com.ibnux.trackandtweet.data.Tweet;
 import com.ibnux.trackandtweet.data.Tweet_;
-import com.ibnux.trackandtweet.ui.AktivitasActivity;
 
 import im.delight.android.location.SimpleLocation;
 import twitter4j.GeoLocation;
@@ -43,7 +43,7 @@ public class TrackNTweetService extends Service implements SimpleLocation.Listen
     Aktivitas aktivitas;
     CountDownTimer cdt;
     int lastShownNotificationId;
-    PendingIntent pendingIntent;
+    Intent pendingIntent;
     int distance, lastDistance, distanceInterval, speed = 0;
     double lastLat = 0, lastLon = 0;
     double latitude, longitude, altitude, jarak;
@@ -142,9 +142,8 @@ public class TrackNTweetService extends Service implements SimpleLocation.Listen
         location.beginUpdates();
 
 
-        Intent pi = new Intent(this, AktivitasActivity.class);
-        pi.putExtra("id", aktivitas.id);
-        pendingIntent = PendingIntent.getActivity(this, 0, pi, 0);
+        pendingIntent = new Intent(this, MainActivity.class);
+        pendingIntent.putExtra("id", aktivitas.id);
 
         aktivitas.status = 1;
         ObjectBox.putAktivitas(aktivitas);
@@ -190,7 +189,7 @@ public class TrackNTweetService extends Service implements SimpleLocation.Listen
 
         final NotificationCompat.Builder builder = getNotificationBuilder(yourService, "tracking"); //Low importance prevent visual appearance for this notification channel on top
         builder.setOngoing(true)
-                .setContentIntent(pendingIntent)
+                .setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, 0))
                 .setProgress(max, progress, false)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(aktivitas.namaAcara)
@@ -209,7 +208,7 @@ public class TrackNTweetService extends Service implements SimpleLocation.Listen
 
         final NotificationCompat.Builder builder = getNotificationBuilder(yourService, "tracking"); //Low importance prevent visual appearance for this notification channel on top
         builder.setOngoing(true)
-                .setContentIntent(pendingIntent)
+                .setContentIntent(PendingIntent.getActivity(this, 0, pendingIntent, 0))
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(aktivitas.namaAcara)
                 .setContentText(content);

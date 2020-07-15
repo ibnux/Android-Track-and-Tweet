@@ -55,7 +55,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Tweet tweet = datas.get(position);
-        holder.txtTanggal.setText(Util.getDate(tweet.waktu,"dd/MM/yyyy hh:mm"));
+        holder.txtTanggal.setText(Util.getDate(tweet.waktu,"dd/MM/yyyy HH:mm"));
         holder.txtUsername.setText("@"+tweet.username);
         holder.txtTweet.setText(tweet.TweetResultText);
         holder.cardview.setOnClickListener(new View.OnClickListener() {
