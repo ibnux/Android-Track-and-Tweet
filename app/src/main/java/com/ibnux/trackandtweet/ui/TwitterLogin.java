@@ -83,7 +83,7 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
                     String session = new String(Base64.decode(url.split("session=")[1], Base64.DEFAULT), "UTF-8");
                     JSONObject json = new JSONObject(session);
                     JSONObject user = json.getJSONObject("user");
-                    Akun akun = new Akun(user.getString("screen_name"),user.getString("id_str"),json.getString("token"),json.getString("secret"));
+                    Akun akun = new Akun(user.getString("screen_name"),user.getString("name"),user.getString("id_str"),json.getString("token"),json.getString("secret"));
                     akun.tkey = json.getString("tkey");
                     akun.tsecret = json.getString("tsec");
                     akun.avatar = user.getString("profile_image_url_https");

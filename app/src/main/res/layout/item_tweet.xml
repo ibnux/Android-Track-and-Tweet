@@ -27,7 +27,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txtTanggal"
+                android:id="@+id/txtHesteg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="17/02/2002"

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:817426372055359947",
-      "lastPropertyId": "8:1534660575005741624",
+      "lastPropertyId": "9:8661532753288816323",
       "name": "Akun",
       "properties": [
         {
@@ -48,72 +48,18 @@
           "id": "8:1534660575005741624",
           "name": "tsecret",
           "type": 9
+        },
+        {
+          "id": "9:8661532753288816323",
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": []
     },
     {
-      "id": "2:7030390697225908388",
-      "lastPropertyId": "9:435159143908446515",
-      "name": "Acara",
-      "properties": [
-        {
-          "id": "1:5516818348023806913",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:4820185531653653627",
-          "name": "namaAcara",
-          "type": 9
-        },
-        {
-          "id": "4:8825578495825280612",
-          "name": "hashTag",
-          "type": 9
-        },
-        {
-          "id": "5:7990578262228554773",
-          "name": "waktu",
-          "type": 6,
-          "flags": 4
-        },
-        {
-          "id": "6:281457693354974620",
-          "name": "status",
-          "type": 5,
-          "flags": 4
-        },
-        {
-          "id": "7:1003905515596775620",
-          "name": "template",
-          "type": 9
-        },
-        {
-          "id": "8:7148690990525512472",
-          "name": "interval",
-          "type": 6,
-          "flags": 4
-        },
-        {
-          "id": "9:435159143908446515",
-          "name": "byTime",
-          "type": 1,
-          "flags": 4
-        }
-      ],
-      "relations": [
-        {
-          "id": "1:8492462206028331630",
-          "name": "akuns",
-          "targetId": "1:817426372055359947"
-        }
-      ]
-    },
-    {
       "id": "3:3769612682949409938",
-      "lastPropertyId": "8:256217776834218091",
+      "lastPropertyId": "11:2067368457491082097",
       "name": "Tweet",
       "properties": [
         {
@@ -163,23 +109,114 @@
           "indexId": "1:2896508553788557502",
           "type": 11,
           "flags": 1548,
-          "relationTarget": "Acara"
+          "relationTarget": "Aktivitas"
+        },
+        {
+          "id": "9:4587254815908766608",
+          "name": "track",
+          "type": 9
+        },
+        {
+          "id": "10:676677862632109836",
+          "name": "tweetID",
+          "type": 9
+        },
+        {
+          "id": "11:2067368457491082097",
+          "name": "TweetResultText",
+          "type": 9
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:8868312819794161274",
+      "lastPropertyId": "9:3608461212952424578",
+      "name": "Aktivitas",
+      "properties": [
+        {
+          "id": "1:3045275170315287657",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7643091969439420355",
+          "name": "namaAcara",
+          "type": 9
+        },
+        {
+          "id": "3:721094355421284564",
+          "name": "template",
+          "type": 9
+        },
+        {
+          "id": "4:3074832113115668864",
+          "name": "hashTag",
+          "type": 9
+        },
+        {
+          "id": "5:4215674426784345034",
+          "name": "waktu",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "6:743616591665404373",
+          "name": "status",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "7:7868140598986489642",
+          "name": "interval",
+          "type": 6,
+          "flags": 4
+        },
+        {
+          "id": "8:1024427023541296223",
+          "name": "byTime",
+          "type": 1,
+          "flags": 4
+        },
+        {
+          "id": "9:3608461212952424578",
+          "name": "satuan",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:7365946630698795011",
+          "name": "akuns",
+          "targetId": "1:817426372055359947"
+        }
+      ]
     }
   ],
-  "lastEntityId": "3:3769612682949409938",
+  "lastEntityId": "4:8868312819794161274",
   "lastIndexId": "1:2896508553788557502",
-  "lastRelationId": "1:8492462206028331630",
+  "lastRelationId": "2:7365946630698795011",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    7030390697225908388
+  ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    8594142417317811642
+    8594142417317811642,
+    5516818348023806913,
+    4820185531653653627,
+    8825578495825280612,
+    7990578262228554773,
+    281457693354974620,
+    1003905515596775620,
+    7148690990525512472,
+    435159143908446515
   ],
-  "retiredRelationUids": [],
+  "retiredRelationUids": [
+    8492462206028331630
+  ],
   "version": 1
 }

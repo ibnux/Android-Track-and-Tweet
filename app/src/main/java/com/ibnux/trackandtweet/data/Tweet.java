@@ -11,13 +11,22 @@ public class Tweet {
     public long id;
     public int urutan, speed;
     public String text;
-    public double lat,lon;
+    //lastLatlong
+    public double lat,lon,alt;
     public long waktu;
     public ToOne<Aktivitas> acara;
+    public String track ="", tweetID, TweetResultText;
 
     public Tweet(int urutan, String text){
         this.urutan = urutan;
         this.text = text;
     }
 
+    /**
+     * String to add
+     * @param latLong lat,long,alt
+     */
+    public void addTrack(String latLong){
+        track += latLong+";";
+    }
 }

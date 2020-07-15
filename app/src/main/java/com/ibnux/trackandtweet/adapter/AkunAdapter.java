@@ -11,9 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ibnux.trackandtweet.R;
-import com.ibnux.trackandtweet.data.Aktivitas;
 import com.ibnux.trackandtweet.data.Akun;
+import com.ibnux.trackandtweet.data.Akun_;
 import com.ibnux.trackandtweet.data.ObjectBox;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class AkunAdapter extends RecyclerView.Adapter<AkunAdapter.MyViewHolder> 
     }
 
     public void reload(){
-        datas = ObjectBox.getAkun().getAll();
+        datas = ObjectBox.getAkun().query().order(Akun_.username).build().find();
         notifyDataSetChanged();
     }
 
@@ -53,7 +54,17 @@ public class AkunAdapter extends RecyclerView.Adapter<AkunAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        Akun akun = datas.get(position);
+        holder.txtName.setText(akun.name);
+        holder.txtUsername.setText(akun.toString());
+        Picasso.get().load(akun.avatar).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder.avatar);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(callback!=null)
+                    callback.onAkunClicked(akun);
+            }
+        });
     }
 
     @Override
@@ -62,6 +73,6 @@ public class AkunAdapter extends RecyclerView.Adapter<AkunAdapter.MyViewHolder> 
     }
 
     public interface AkunCallback {
-        void onAkunClicked(Aktivitas aktivitas);
+        void onAkunClicked(Akun akun);
     }
 }

@@ -1,6 +1,7 @@
 package com.ibnux.trackandtweet.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,5 +16,7 @@ public class AktivitasActivity extends AppCompatActivity {
         setTitle("Aktivitas");
         binding = ActivityAktivitasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.tableStats.setVisibility(View.GONE);
     }
 }

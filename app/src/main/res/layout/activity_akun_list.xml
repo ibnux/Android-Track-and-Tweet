@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:text="Add Account"
-        app:icon="@drawable/ic_action_user"
+        android:text="Tambah Akun Twitter"
+        app:icon="@drawable/ic_action_add"
         app:iconTint="@android:color/white" />
 
     <androidx.recyclerview.widget.RecyclerView

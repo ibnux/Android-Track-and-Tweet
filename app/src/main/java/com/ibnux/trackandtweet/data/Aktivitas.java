@@ -8,12 +8,14 @@ import io.objectbox.relation.ToMany;
 public class Aktivitas {
     @Id
     public long id;
-    public String namaAcara, template, hashTag;
+    public String namaAcara, template, hashTag, satuan;
     public long waktu;
-    public int status = 0; // draft 1. started 2. finished 3. archived
+    public int status = 0; // draft 1. started 2. paused 3. finished
     public long interval = 0; // 5 minutes
     public boolean byTime = true;
     public ToMany<Akun> akuns;
+
+    public Aktivitas(){}
 
     public Aktivitas(String namaAcara, String template, String hashTag, long waktu){
         this.namaAcara = namaAcara;

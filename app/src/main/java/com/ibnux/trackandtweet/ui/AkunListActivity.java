@@ -1,20 +1,24 @@
 package com.ibnux.trackandtweet.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ibnux.trackandtweet.adapter.AkunAdapter;
-import com.ibnux.trackandtweet.data.Aktivitas;
+import com.ibnux.trackandtweet.data.Akun;
+import com.ibnux.trackandtweet.data.ObjectBox;
 import com.ibnux.trackandtweet.databinding.ActivityAkunListBinding;
 
 public class AkunListActivity extends AppCompatActivity implements View.OnClickListener, AkunAdapter.AkunCallback{
     ActivityAkunListBinding binding;
     AkunAdapter adapter;
+    boolean isPicker = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,11 @@ public class AkunListActivity extends AppCompatActivity implements View.OnClickL
         binding.listView.setHasFixedSize(true);
         binding.listView.setLayoutManager(new LinearLayoutManager(this));
         binding.listView.setAdapter(adapter);
+
+        Intent i = getIntent();
+        if(i.hasExtra("picker")){
+            isPicker = true;
+        }
     }
 
     @Override
@@ -46,7 +55,31 @@ public class AkunListActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onAkunClicked(Aktivitas aktivitas) {
+    public void onAkunClicked(Akun akun) {
+        if(isPicker){
+            Intent i = getIntent();
+            i.putExtra("id",akun.id);
+            setResult(RESULT_OK,i);
+            finish();
+        }else{
+            new AlertDialog.Builder(this)
+                    .setTitle("Delete")
+                    .setMessage(akun.toString()+" mau dihapus?")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            ObjectBox.getAkun().remove(akun.id);
+                            adapter.reload();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
+    }
 
+    @Override
+    public void finish() {
+        setResult(RESULT_OK);
+        super.finish();
     }
 }

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:817426372055359947",
-      "lastPropertyId": "8:1534660575005741624",
+      "lastPropertyId": "9:8661532753288816323",
       "name": "Akun",
       "properties": [
         {
@@ -48,13 +48,18 @@
           "id": "8:1534660575005741624",
           "name": "tsecret",
           "type": 9
+        },
+        {
+          "id": "9:8661532753288816323",
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": []
     },
     {
       "id": "3:3769612682949409938",
-      "lastPropertyId": "8:256217776834218091",
+      "lastPropertyId": "12:6259256918141326711",
       "name": "Tweet",
       "properties": [
         {
@@ -105,13 +110,34 @@
           "type": 11,
           "flags": 1548,
           "relationTarget": "Aktivitas"
+        },
+        {
+          "id": "9:4587254815908766608",
+          "name": "track",
+          "type": 9
+        },
+        {
+          "id": "10:676677862632109836",
+          "name": "tweetID",
+          "type": 9
+        },
+        {
+          "id": "11:2067368457491082097",
+          "name": "TweetResultText",
+          "type": 9
+        },
+        {
+          "id": "12:6259256918141326711",
+          "name": "alt",
+          "type": 8,
+          "flags": 4
         }
       ],
       "relations": []
     },
     {
       "id": "4:8868312819794161274",
-      "lastPropertyId": "8:1024427023541296223",
+      "lastPropertyId": "9:3608461212952424578",
       "name": "Aktivitas",
       "properties": [
         {
@@ -158,6 +184,11 @@
           "name": "byTime",
           "type": 1,
           "flags": 4
+        },
+        {
+          "id": "9:3608461212952424578",
+          "name": "satuan",
+          "type": 9
         }
       ],
       "relations": [

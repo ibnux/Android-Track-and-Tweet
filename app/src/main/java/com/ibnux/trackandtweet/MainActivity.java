@@ -1,16 +1,19 @@
 package com.ibnux.trackandtweet;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ibnux.trackandtweet.adapter.AktivitasAdapter;
 import com.ibnux.trackandtweet.data.Aktivitas;
+import com.ibnux.trackandtweet.data.ObjectBox;
 import com.ibnux.trackandtweet.databinding.ActivityMainBinding;
 import com.ibnux.trackandtweet.ui.AddEditAktivitasActivity;
 import com.ibnux.trackandtweet.ui.AktivitasActivity;
@@ -64,9 +67,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onAktivitasLongClicked(Aktivitas aktivitas) {
-        Intent i = new Intent(this, AddEditAktivitasActivity.class);
-        i.putExtra("id",aktivitas.id);
-        startActivityForResult(i,220);
+        new AlertDialog.Builder(this)
+                .setIcon(R.mipmap.ic_launcher)
+                .setTitle("Apa yang akan dilakukan?")
+                .setMessage(aktivitas.namaAcara)
+                .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(MainActivity.this, AddEditAktivitasActivity.class);
+                        i.putExtra("id",aktivitas.id);
+                        startActivityForResult(i,220);
+                    }
+                })
+                .setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle("Yakin mau dihapus?")
+                                .setMessage(aktivitas.namaAcara)
+                                .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ObjectBox.getAktivitas().remove(aktivitas);
+                                        adapter.reload();
+                                    }
+                                })
+                                .setNegativeButton("Batal",null)
+                                .show();
+                    }
+                })
+                .setNegativeButton("Copy", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        aktivitas.id = 0L;
+                        aktivitas.waktu = System.currentTimeMillis();
+                        Intent i = new Intent(MainActivity.this, AddEditAktivitasActivity.class);
+                        i.putExtra("id",ObjectBox.getAktivitas().put(aktivitas));
+                        startActivityForResult(i,220);
+                        adapter.reload();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     @Override

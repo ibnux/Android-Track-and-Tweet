@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ibnux.trackandtweet.R;
 import com.ibnux.trackandtweet.Util;
 import com.ibnux.trackandtweet.data.Aktivitas;
+import com.ibnux.trackandtweet.data.Aktivitas_;
 import com.ibnux.trackandtweet.data.ObjectBox;
 
 import java.util.List;
@@ -21,14 +22,16 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
     AktivitasCallback callback;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtJudul, txtUsername, txtTanggal;
+        TextView txtJudul, txtUsername, txtHesteg,txtLastTweet, txtDetail;
         CardView layoutCard;
         public MyViewHolder(View v) {
             super(v);
             txtJudul = v.findViewById(R.id.txtJudul);
             txtUsername = v.findViewById(R.id.txtUsername);
-            txtTanggal = v.findViewById(R.id.txtTanggal);
+            txtHesteg = v.findViewById(R.id.txtHesteg);
             layoutCard = v.findViewById(R.id.layoutCard);
+            txtLastTweet = v.findViewById(R.id.txtLastTweet);
+            txtDetail = v.findViewById(R.id.txtDetail);
         }
     }
 
@@ -38,7 +41,7 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
     }
 
     public void reload(){
-        datas = ObjectBox.getAktivitas().getAll();
+        datas = ObjectBox.getAktivitas().query().orderDesc(Aktivitas_.waktu).build().find();
         notifyDataSetChanged();
     }
 
@@ -53,7 +56,7 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Aktivitas aktivitas = datas.get(position);
         holder.txtJudul.setText(aktivitas.namaAcara);
-        holder.txtTanggal.setText(Util.getDate(aktivitas.waktu,"dd/MM/yyyy hh:mm"));
+        holder.txtLastTweet.setText(Util.getDate(aktivitas.waktu,"dd/MM/yyyy hh:mm"));
         String username = "";
         int jml = aktivitas.akuns.size();
         for(int n=0;n<jml;n++){
@@ -62,6 +65,8 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
         if(!username.isEmpty())
             username = username.substring(0, username.length()-2);
         holder.txtUsername.setText(username);
+        holder.txtHesteg.setText(aktivitas.hashTag);
+        holder.txtDetail.setText("Tweet setiap "+aktivitas.interval+" "+aktivitas.satuan);
         holder.layoutCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
