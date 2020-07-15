@@ -87,7 +87,7 @@ public class TwitterLogin extends AppCompatActivity implements AdvancedWebView.L
                     akun.tkey = json.getString("tkey");
                     akun.tsecret = json.getString("tsec");
                     akun.avatar = user.getString("profile_image_url_https");
-                    ObjectBox.getAkun().put(akun);
+                    ObjectBox.putAkun(akun);
                     setResult(RESULT_OK);
                 }catch (Exception e){
                     Log.d("T&T", "onPageFinished Exception "+e.getMessage());

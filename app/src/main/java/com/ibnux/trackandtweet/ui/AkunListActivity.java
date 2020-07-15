@@ -65,7 +65,7 @@ public class AkunListActivity extends AppCompatActivity implements View.OnClickL
             new AlertDialog.Builder(this)
                     .setTitle("Delete")
                     .setMessage(akun.toString()+" mau dihapus?")
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    .setNeutralButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             ObjectBox.getAkun().remove(akun.id);
                             adapter.reload();

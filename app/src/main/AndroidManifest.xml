@@ -13,16 +13,19 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AddEditAktivitasActivity"></activity>
+        <activity android:name=".ui.AddEditAktivitasActivity"/>
         <activity android:name=".ui.AkunListActivity" />
-        <activity android:name=".ui.AktivitasActivity" />
+        <activity android:name=".ui.AktivitasActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".ui.TwitterLogin" />
 
         <service android:name=".services.TrackNTweetService" />
-        <service android:name="com.highbryds.gpstracker.GPSService" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

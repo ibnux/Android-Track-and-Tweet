@@ -59,7 +59,7 @@
     },
     {
       "id": "3:3769612682949409938",
-      "lastPropertyId": "11:2067368457491082097",
+      "lastPropertyId": "17:8944446554594878123",
       "name": "Tweet",
       "properties": [
         {
@@ -67,12 +67,6 @@
           "name": "id",
           "type": 6,
           "flags": 1
-        },
-        {
-          "id": "2:4401657930124488041",
-          "name": "urutan",
-          "type": 5,
-          "flags": 4
         },
         {
           "id": "3:1290406479505950142",
@@ -104,34 +98,57 @@
           "flags": 4
         },
         {
-          "id": "8:256217776834218091",
-          "name": "acaraId",
-          "indexId": "1:2896508553788557502",
-          "type": 11,
-          "flags": 1548,
-          "relationTarget": "Aktivitas"
-        },
-        {
           "id": "9:4587254815908766608",
           "name": "track",
-          "type": 9
-        },
-        {
-          "id": "10:676677862632109836",
-          "name": "tweetID",
           "type": 9
         },
         {
           "id": "11:2067368457491082097",
           "name": "TweetResultText",
           "type": 9
+        },
+        {
+          "id": "12:6259256918141326711",
+          "name": "alt",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "13:2761338401412118653",
+          "name": "jarak",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "14:2622262076150643971",
+          "name": "username",
+          "type": 9
+        },
+        {
+          "id": "15:6441745043328808684",
+          "name": "aktivitasId",
+          "indexId": "2:3562766062659833603",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Aktivitas"
+        },
+        {
+          "id": "16:6295513423966063048",
+          "name": "userid",
+          "type": 9
+        },
+        {
+          "id": "17:8944446554594878123",
+          "name": "statusId",
+          "type": 6,
+          "flags": 4
         }
       ],
       "relations": []
     },
     {
       "id": "4:8868312819794161274",
-      "lastPropertyId": "9:3608461212952424578",
+      "lastPropertyId": "13:7843689099844969433",
       "name": "Aktivitas",
       "properties": [
         {
@@ -183,6 +200,30 @@
           "id": "9:3608461212952424578",
           "name": "satuan",
           "type": 9
+        },
+        {
+          "id": "10:3182298261130942290",
+          "name": "lastLatitude",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "11:8578071552675084532",
+          "name": "lastLongitude",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "12:1370392271090238618",
+          "name": "lastAltitude",
+          "type": 8,
+          "flags": 4
+        },
+        {
+          "id": "13:7843689099844969433",
+          "name": "lastJarak",
+          "type": 8,
+          "flags": 4
         }
       ],
       "relations": [
@@ -190,20 +231,27 @@
           "id": "2:7365946630698795011",
           "name": "akuns",
           "targetId": "1:817426372055359947"
+        },
+        {
+          "id": "3:5653488824551231466",
+          "name": "tweets",
+          "targetId": "3:3769612682949409938"
         }
       ]
     }
   ],
   "lastEntityId": "4:8868312819794161274",
-  "lastIndexId": "1:2896508553788557502",
-  "lastRelationId": "2:7365946630698795011",
+  "lastIndexId": "2:3562766062659833603",
+  "lastRelationId": "3:5653488824551231466",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [
     7030390697225908388
   ],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    2896508553788557502
+  ],
   "retiredPropertyUids": [
     8594142417317811642,
     5516818348023806913,
@@ -213,7 +261,10 @@
     281457693354974620,
     1003905515596775620,
     7148690990525512472,
-    435159143908446515
+    435159143908446515,
+    4401657930124488041,
+    256217776834218091,
+    676677862632109836
   ],
   "retiredRelationUids": [
     8492462206028331630

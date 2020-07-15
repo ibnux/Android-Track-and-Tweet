@@ -1,5 +1,6 @@
 package com.ibnux.trackandtweet.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,13 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
     AktivitasCallback callback;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtJudul, txtUsername, txtHesteg,txtLastTweet, txtDetail;
+        TextView txtJudul, txtUsername, txtHashtag,txtLastTweet, txtDetail;
         CardView layoutCard;
         public MyViewHolder(View v) {
             super(v);
             txtJudul = v.findViewById(R.id.txtJudul);
             txtUsername = v.findViewById(R.id.txtUsername);
-            txtHesteg = v.findViewById(R.id.txtHesteg);
+            txtHashtag = v.findViewById(R.id.txtHashtag);
             layoutCard = v.findViewById(R.id.layoutCard);
             txtLastTweet = v.findViewById(R.id.txtLastTweet);
             txtDetail = v.findViewById(R.id.txtDetail);
@@ -65,8 +66,8 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
         if(!username.isEmpty())
             username = username.substring(0, username.length()-2);
         holder.txtUsername.setText(username);
-        holder.txtHesteg.setText(aktivitas.hashTag);
-        holder.txtDetail.setText("Tweet setiap "+aktivitas.interval+" "+aktivitas.satuan);
+        holder.txtHashtag.setText(aktivitas.hashTag);
+        holder.txtDetail.setText("diTweet setiap "+aktivitas.interval+" "+aktivitas.satuan);
         holder.layoutCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,14 @@ public class AktivitasAdapter extends RecyclerView.Adapter<AktivitasAdapter.MyVi
                 return false;
             }
         });
+        if(aktivitas.status==1)
+            holder.layoutCard.setCardBackgroundColor(Color.parseColor("#4CAF50")); // hijau
+        else if(aktivitas.status==2)
+            holder.layoutCard.setCardBackgroundColor(Color.parseColor("#FFEB3B"));
+        else if(aktivitas.status==3)
+            holder.layoutCard.setCardBackgroundColor(Color.parseColor("#009688"));
+        else
+            holder.layoutCard.setCardBackgroundColor(null);
     }
 
     @Override

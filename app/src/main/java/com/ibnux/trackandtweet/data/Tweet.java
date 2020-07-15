@@ -9,17 +9,16 @@ import io.objectbox.relation.ToOne;
 public class Tweet {
     @Id
     public long id;
-    public int urutan, speed;
+    public int speed;
+    public int jarak;
     public String text;
     //lastLatlong
-    public double lat,lon,alt;
-    public long waktu;
-    public ToOne<Aktivitas> acara;
-    public String track ="", tweetID, TweetResultText;
+    public double lat=0,lon=0,alt=0;
+    public long waktu, statusId;
+    public ToOne<Aktivitas> aktivitas;
+    public String track ="", TweetResultText, username, userid;
 
-    public Tweet(int urutan, String text){
-        this.urutan = urutan;
-        this.text = text;
+    public Tweet(){
     }
 
     /**

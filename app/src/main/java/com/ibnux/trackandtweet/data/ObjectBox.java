@@ -21,11 +21,11 @@ public class ObjectBox {
     }
 
     public static Akun getAkun(String userid){
-        return get().boxFor(Akun.class).query().equal(Akun_.username,userid).or().equal(Akun_.userid, userid).build().findFirst();
+        return getAkun().query().equal(Akun_.username,userid).or().equal(Akun_.userid, userid).build().findFirst();
     }
 
     public static long putAkun(Akun akun){
-        return get().boxFor(Akun.class).put(akun);
+        return getAkun().put(akun);
     }
 
     public static Box<Aktivitas> getAktivitas(){
@@ -33,10 +33,22 @@ public class ObjectBox {
     }
 
     public static Aktivitas getAktivitas(long id){
-        return get().boxFor(Aktivitas.class).query().equal(Aktivitas_.id,id).build().findFirst();
+        return getAktivitas().query().equal(Aktivitas_.id,id).build().findFirst();
     }
 
     public static long putAktivitas(Aktivitas acara){
-        return get().boxFor(Aktivitas.class).put(acara);
+        return getAktivitas().put(acara);
+    }
+
+    public static Box<Tweet> getTweet(){
+        return get().boxFor(Tweet.class);
+    }
+
+    public static Tweet getTweet(long id){
+        return getTweet().query().equal(Tweet_.id,id).build().findFirst();
+    }
+
+    public static long putAktivitas(Tweet tweet){
+        return getTweet().put(tweet);
     }
 }

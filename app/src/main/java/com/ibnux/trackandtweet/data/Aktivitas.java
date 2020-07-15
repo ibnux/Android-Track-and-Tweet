@@ -10,10 +10,15 @@ public class Aktivitas {
     public long id;
     public String namaAcara, template, hashTag, satuan;
     public long waktu;
-    public int status = 0; // draft 1. started 2. paused 3. finished
+    public int status = 0; // 0. draft 1. started 2. paused 3. finished
     public long interval = 0; // 5 minutes
     public boolean byTime = true;
+    public double lastLatitude = 0;
+    public double lastLongitude = 0;
+    public double lastAltitude = 0;
+    public int lastDistance = 0;
     public ToMany<Akun> akuns;
+    public ToMany<Tweet> tweets;
 
     public Aktivitas(){}
 

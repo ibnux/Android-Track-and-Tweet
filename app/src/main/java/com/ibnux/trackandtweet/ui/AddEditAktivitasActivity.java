@@ -30,7 +30,6 @@ public class AddEditAktivitasActivity extends AppCompatActivity implements View.
 
         binding.layoutJarak.setVisibility(View.GONE);
 
-
         Intent i = getIntent();
         if(i.hasExtra("id")){
             setTitle("Edit Aktivitas");
@@ -139,15 +138,16 @@ public class AddEditAktivitasActivity extends AppCompatActivity implements View.
             aktivitas.satuan = binding.spinnerWaktu.getSelectedItem().toString();
         }else{
             aktivitas.byTime = false;
-            nilai = Long.parseLong(binding.txtDetik.getText().toString());
+            nilai = Long.parseLong(binding.txtMeter.getText().toString());
             aktivitas.satuan = binding.spinnerJarak.getSelectedItem().toString();
         }
         aktivitas.interval = nilai;
         aktivitas.namaAcara = binding.txtJudul.getText().toString();
         aktivitas.template = binding.txtTweet.getText().toString();
         aktivitas.hashTag = binding.txtHashtag.getText().toString();
+        aktivitas.akuns.clear();
         aktivitas.akuns.addAll(akuns);
-        ObjectBox.getAktivitas().put(aktivitas);
+        ObjectBox.putAktivitas(aktivitas);
         setResult(RESULT_OK);
         finish();
     }

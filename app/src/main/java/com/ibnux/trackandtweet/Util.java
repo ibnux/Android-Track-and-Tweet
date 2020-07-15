@@ -1,5 +1,9 @@
 package com.ibnux.trackandtweet;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -20,5 +24,23 @@ public class Util {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(milliSeconds);
         return formatter.format(calendar.getTime());
+    }
+
+    public static void log(Object obj){
+        Log.d("TnT","------------------");
+        Log.d("TnT",obj+"");
+        Log.d("TnT","------------------");
+    }
+
+    public static boolean isMyServiceRunning(Class<?> serviceClass, Context cx) {
+        ActivityManager manager = (ActivityManager) cx.getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                log(serviceClass.getName()+" is running");
+                return true;
+            }
+        }
+        log(serviceClass.getName()+" is NOT running");
+        return false;
     }
 }

@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         aktivitas.id = 0L;
                         aktivitas.waktu = System.currentTimeMillis();
                         Intent i = new Intent(MainActivity.this, AddEditAktivitasActivity.class);
-                        i.putExtra("id",ObjectBox.getAktivitas().put(aktivitas));
+                        i.putExtra("id",ObjectBox.putAktivitas(aktivitas));
                         startActivityForResult(i,220);
                         adapter.reload();
                     }
@@ -125,5 +125,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 adapter.reload();
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        if(adapter!=null) adapter.reload();
+        super.onResume();
     }
 }

@@ -3,8 +3,8 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string-array name="tweet_every">
-        <item>Waktu</item>
-        <item>Jarak</item>
+        <item>Waktu dicapai</item>
+        <item>Jarak ditempuh</item>
     </string-array>
     <string-array name="waktu">
         <item>detik</item>
