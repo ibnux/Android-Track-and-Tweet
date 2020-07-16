@@ -3,6 +3,7 @@ package com.ibnux.trackandtweet;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,12 +19,14 @@ import com.ibnux.trackandtweet.databinding.ActivityMainBinding;
 import com.ibnux.trackandtweet.ui.AddEditAktivitasActivity;
 import com.ibnux.trackandtweet.ui.AktivitasActivity;
 import com.ibnux.trackandtweet.ui.AkunListActivity;
+import com.ibnux.trackandtweet.ui.WarningFragment;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AktivitasAdapter.AktivitasCallback {
@@ -55,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         binding.btnAddAktivitas.setOnClickListener(this);
         binding.btnUser.setOnClickListener(this);
+
+        SharedPreferences sp = getSharedPreferences("settings",0);
+        if(!sp.getBoolean("isWarningDone",false) || sp.getInt("warningDay",0)!=Calendar.getInstance().get(Calendar.DAY_OF_MONTH)){
+            WarningFragment.newInstance().show(getSupportFragmentManager(),"warning");
+            sp.edit().putBoolean("isWarningDone",true).putInt("warningDay", Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).apply();
+        }
 
     }
 
