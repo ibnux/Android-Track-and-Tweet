@@ -64,6 +64,7 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
         LocalBroadcastManager.getInstance(this).registerReceiver(br,new IntentFilter(aktivitas.id+""));
 
         if(Util.isMyServiceRunning(TrackNTweetService.class,this)) {
+            // jika ada service jalan, tanya apakah punya aktivitas ini
             Intent is = new Intent("TrackNTweetService");
             is.putExtra("isRunning", "isRunning");
             is.putExtra("broadcast", aktivitas.id + "");
@@ -71,6 +72,7 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
         }else{
             if (aktivitas.status == 1) {
                 aktivitas.status = 2;
+                ObjectBox.putAktivitas(aktivitas);
             }
         }
         setData();
@@ -230,14 +232,16 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onResume() {
+        //Daftarkan broadcast berdasarkan id aktivitas
         if(aktivitas!=null)
-        LocalBroadcastManager.getInstance(this).registerReceiver(br,new IntentFilter(aktivitas.id+""));
+            LocalBroadcastManager.getInstance(this).registerReceiver(br,new IntentFilter(aktivitas.id+""));
         location.beginUpdates();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
+        //hapus pendaftaran broadcast
         LocalBroadcastManager.getInstance(this).unregisterReceiver(br);
         location.endUpdates();
         super.onPause();
@@ -246,6 +250,7 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
     BroadcastReceiver br = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            //cek apakah yang running punya aktivitas yang dibuka
             if(intent.hasExtra("isRunning")) {
                 if (intent.getBooleanExtra("isRunning", false)) {
                     if (aktivitas.id != intent.getLongExtra("id", 0L)) {
@@ -258,8 +263,10 @@ public class AktivitasActivity extends AppCompatActivity implements View.OnClick
                     }
                 }
             }else if(intent.hasExtra("tweet")){
+                //reload setiap ngeTweet
                 adapter.reload();
             }else{
+                // ada perubahan status aktivitas
                 aktivitas = ObjectBox.getAktivitas(aktivitas.id);
                 setData();
             }

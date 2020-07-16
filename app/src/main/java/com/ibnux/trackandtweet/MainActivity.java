@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setNegativeButton("Copy", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         aktivitas.id = 0L;
+                        aktivitas.status = 0;
                         aktivitas.waktu = System.currentTimeMillis();
                         Intent i = new Intent(MainActivity.this, AddEditAktivitasActivity.class);
                         i.putExtra("id",ObjectBox.putAktivitas(aktivitas));
