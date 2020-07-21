@@ -14,12 +14,13 @@ import com.ibnux.trackandtweet.Util;
 import com.ibnux.trackandtweet.data.ObjectBox;
 import com.ibnux.trackandtweet.data.Tweet;
 import com.ibnux.trackandtweet.data.Tweet_;
+import com.ibnux.trackandtweet.ui.AktivitasActivity;
 
 import java.util.List;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.MyViewHolder> {
     private List<Tweet> datas;
-    TweetAdapter.TweetCallback callback;
+    AktivitasActivity callback;
     long idAktivitas;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -34,7 +35,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.MyViewHolder
         }
     }
 
-    public TweetAdapter(long idAktivitas, TweetAdapter.TweetCallback callback){
+    public TweetAdapter(long idAktivitas, AktivitasActivity callback){
         this.idAktivitas = idAktivitas;
         this.callback = callback;
         reload();
@@ -43,6 +44,21 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.MyViewHolder
     public void reload(){
         datas = ObjectBox.getTweet().query().equal(Tweet_.aktivitasId,idAktivitas).orderDesc(Tweet_.waktu).build().find();
         notifyDataSetChanged();
+        if(callback==null) return;
+
+        int jml = getItemCount();
+        StringBuilder data = new StringBuilder();
+        for(int n=0;n<jml;n++){
+            Tweet twt = datas.get(n);
+            if(twt.waktu>callback.timeH)
+                callback.timeH = twt.waktu;
+            if(twt.waktu<callback.timeL)
+                callback.timeL = twt.waktu;
+            callback.jarak += twt.jarak;
+            data.append(twt.track);
+        }
+        callback.lama = callback.timeH-callback.timeL;
+        callback.hitungStatistik(data.toString());
     }
 
     @NonNull

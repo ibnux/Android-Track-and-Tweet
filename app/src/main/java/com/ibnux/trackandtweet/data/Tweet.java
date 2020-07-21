@@ -23,7 +23,7 @@ public class Tweet {
 
     /**
      * String to add
-     * @param latLong lat,long,alt
+     * @param latLong lat,long,alt,speed
      */
     public void addTrack(String latLong){
         track += latLong+";";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,189 +8,227 @@
     android:padding="4dp"
     tools:context=".ui.AktivitasActivity">
 
-    <TextView
-        android:id="@+id/txtJudul"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Judul Aktivitas"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        <TextView
+            android:id="@+id/txtJudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Aktivitas"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTweet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="TextView"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/txtDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="details"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnMulai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai Aktivitas" />
 
         <LinearLayout
+            android:id="@+id/layoutTombol"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:backgroundTint="#F44336"
+                android:text="STOP" />
+
+            <Button
+                android:id="@+id/btnPause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:backgroundTint="#E91E63"
+                android:text="PAUSE" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statistik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txtTweet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:text="TextView"
-                android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/txtDetail"
+            <TableLayout
+                android:id="@+id/tableStats"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:text="details"
-                android:textSize="12sp" />
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SPEED"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/topSpeed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TOP: 100kmj" />
+
+                    <TextView
+                        android:id="@+id/avgSpeed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="AVG: 30kmj" />
+
+                    <TextView
+                        android:id="@+id/lowSpeed"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LOW: 10kmj" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ALTITUDE"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/topAltitude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TOP: 30m" />
+
+                    <TextView
+                        android:id="@+id/avgAltitude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="AVG: 12 m" />
+
+                    <TextView
+                        android:id="@+id/lowAltitude"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LOW: 4 m" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="DISTANCE"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="100km" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TIME"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/times"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="4J 3M" />
+                </TableRow>
+
+            </TableLayout>
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/peta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/grafikElevation"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF" />
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btnMulai"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mulai Aktivitas" />
-
-    <LinearLayout
-        android:id="@+id/layoutTombol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnTweetStats"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:backgroundTint="#F44336"
-            android:text="STOP" />
+            android:text="Tweet Statistik" />
 
-        <Button
-            android:id="@+id/btnPause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:backgroundTint="#E91E63"
-            android:text="PAUSE" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_tweet" />
     </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/tableStats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="SPEED"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/topSpeed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TOP: 100kmj" />
-
-            <TextView
-                android:id="@+id/avgSpeed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="AVG: 30kmj" />
-
-            <TextView
-                android:id="@+id/lowSpeed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="LOW: 10kmj" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ALTITUDE"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/topAltitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TOP: 30m" />
-
-            <TextView
-                android:id="@+id/avgAltitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="AVG: 12 m" />
-
-            <TextView
-                android:id="@+id/lowAltitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="LOW: 4 m" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="DISTANCE"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/distance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="100km" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TIME"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/times"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="4J 3M" />
-        </TableRow>
-
-    </TableLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_tweet" />
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
